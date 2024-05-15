@@ -1,0 +1,74 @@
+﻿using System;
+using System.Text.RegularExpressions;
+
+public static class DataValidator
+{
+    // Validate email format using regular expression
+    public static bool IsValidEmail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return false;
+
+        // Email validation regex (basic)
+        string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+        return Regex.IsMatch(email, emailPattern);
+    }
+
+    // Validate phone number format
+    public static bool IsValidPhoneNumber(string phoneNumber)
+    {
+        if (string.IsNullOrWhiteSpace(phoneNumber))
+            return false;
+
+        // Phone number validation regex (basic)
+        string phonePattern = @"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$";
+        return Regex.IsMatch(phoneNumber, phonePattern);
+    }
+
+    // Validate date format
+    public static bool IsValidDate(string date)
+    {
+        if (string.IsNullOrWhiteSpace(date))
+            return false;
+
+        // Date validation regex (basic)
+        string datePattern = @"^(0?[1-9]|1[0-2])/(0?[1-9]|1\d|2\d|3[01])/(19|20)\d{2}$";
+        return Regex.IsMatch(date, datePattern);
+    }
+
+    // Sanitize input to prevent SQL injection
+    public static string SanitizeInput(string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+            return input;
+
+        // Replace potentially harmful characters
+        string sanitizedInput = input.Replace("'", "''")
+                                     .Replace("--", "");
+
+        return sanitizedInput;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Test email validation
+        string email = "test@example.com";
+        Console.WriteLine($"Is {email} a valid email? {DataValidator.IsValidEmail(email)}");
+
+        // Test phone number validation
+        string phoneNumber = "+1234567890";
+        Console.WriteLine($"Is {phoneNumber} a valid phone number? {DataValidator.IsValidPhoneNumber(phoneNumber)}");
+
+        // Test date validation
+        string date = "12/31/2024";
+        Console.WriteLine($"Is {date} a valid date? {DataValidator.IsValidDate(date)}");
+
+        // Test input sanitization
+        string userInput = "'; DROP TABLE Users; --";
+        string sanitizedInput = DataValidator.SanitizeInput(userInput);
+        Console.WriteLine($"Sanitized Input: {sanitizedInput}");
+    }
+}

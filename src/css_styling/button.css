@@ -1,0 +1,47 @@
+/* buttons.css */
+
+/* Base button styles */
+.button2 {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-weight:normal;
+  position: center;
+  text-decoration: none; /* Remove underline from links */
+  }
+  
+  /* Hover effect */
+  .button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+  }
+  
+  /* Different button color */
+  .button.secondary {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #28a745; /* Green color, you can change this */
+  }
+
+  
+  /* Small button */
+  .button.small {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  /* Large button */
+  .button.large {
+    padding: 15px 30px;
+    font-size: 18px;
+  }
+  
