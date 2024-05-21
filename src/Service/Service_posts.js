@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-const API_URL = 'http://localhost:3030/posts';
+const API_URL = 'http://13.49.244.241:3030/posts';
 let socket_post
 let posts = [];
 let locallyModifiedPosts = [];
@@ -9,7 +9,7 @@ const POST_STORAGE_KEY = 'posts';
 const PostService = {  
     connect: async () => {
         try {
-            socket_post = new WebSocket('ws://localhost:3030/posts');
+            socket_post = new WebSocket('ws://13.49.244.241:3030/posts');
             socket_post.addEventListener('open', function () {
                 console.log('Connection established.');
             });

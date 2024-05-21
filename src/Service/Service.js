@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-const API_URL = 'http://localhost:3030';
+const API_URL = 'http://13.49.244.241:3030';
 let socket
 let users = [];
 let locallyModifiedUsers = [];
@@ -8,8 +8,8 @@ const USER_STORAGE_KEY = 'users';
 const UserService = {
   connect: async () => {
     try {
-      socket = new WebSocket('ws://localhost:3030');
-
+      socket = new WebSocket('ws://13.49.244.241:3030');
+      console.log("socket id: ",socket.id)
       socket.addEventListener('open', function () {
         console.log('Connection established.');
       });

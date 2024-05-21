@@ -1,11 +1,14 @@
 .container {
-    max-width: 600px;
+    max-width: 6000px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
     background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
 }
 
 h1 {
@@ -37,3 +40,16 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+/* Create a two-column layout */
+.column {
+    float: left;
+    width: 50%;
+    padding: 100px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
